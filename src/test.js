@@ -1,5 +1,10 @@
-const t1 = () => {
-    console.log('test');
-}
+const http = require('http');
 
-t1();
+const server = http.createServer((request, response) => {
+    response.write('node server~');
+    response.end();
+})
+
+server.listen('3000', () => {
+    console.log('服务已启动！')
+})
