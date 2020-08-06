@@ -45,7 +45,7 @@ app.get('/posts/:postId', (request: Request, response: Response) => {
     // 获取内容ID
     const { postId } = request.params;
     // 查询对应的数据
-    const results = data.filter(item => item.id == postId)
+    const results = data.filter(item => item.id == parseInt(postId))
     // 作出相应
     response.send(results[0]);
 })
