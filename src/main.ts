@@ -1,6 +1,7 @@
 // 使用express创建Web服务器
-const express = require('express');
-const { response } = require('express');
+// const express = require('express');
+import express from 'express';
+// const { response } = require('express');
 const app = express();
 const port = 3000;
 
