@@ -13,6 +13,10 @@ export const index = (
   response: Response,
   next: NextFunction,
 ) => {
+  if (request.headers.authorization !== 'SECRET') {
+    return next(new Error());
+  }
+
   const posts = getPosts();
   response.send(posts);
 };
