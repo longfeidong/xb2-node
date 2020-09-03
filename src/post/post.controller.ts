@@ -8,15 +8,15 @@ import { getPosts } from './post.service';
  * @param response
  * @param next
  */
-export const index = (
+export const index = async (
   request: Request,
   response: Response,
   next: NextFunction,
 ) => {
-  if (request.headers.authorization !== 'SECRET') {
-    return next(new Error());
-  }
+  // if (request.headers.authorization !== 'SECRET') {
+  //   return next(new Error());
+  // }
 
-  const posts = getPosts();
+  const posts = await getPosts();
   response.send(posts);
 };
