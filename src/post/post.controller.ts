@@ -17,6 +17,11 @@ export const index = async (
   //   return next(new Error());
   // }
 
-  const posts = await getPosts();
-  response.send(posts);
+  // 异常处理
+  try {
+    const posts = await getPosts();
+    response.send(posts);
+  } catch (error) {
+    next(error);
+  }
 };

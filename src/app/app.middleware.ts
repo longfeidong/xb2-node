@@ -26,6 +26,10 @@ export const defaultErrorHandler = (
   response: Response,
   next: NextFunction,
 ) => {
+  if (error.message) {
+    console.log('异常错误：', error.message);
+  }
+
   let statusCode: number, message: string;
   /**
    * 处理异常
