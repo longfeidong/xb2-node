@@ -2,6 +2,7 @@
  * 获取内容列表
  */
 import { connection } from '../app/database/mysql';
+import { PostModel } from './post.model';
 
 export const getPosts = async () => {
   // const data = [
@@ -31,5 +32,22 @@ export const getPosts = async () => {
   // await必须写在async函数内部
   const [data] = await connection.promise().query(statement);
 
+  return data;
+};
+
+/**
+ * 创建内容
+ */
+export const createPost = async (post: PostModel) => {
+  // 准备查询语句
+  const statement = `
+    INSERT INTO post
+    SET ?
+  `;
+
+  // 执行查询
+  const [data] = await connection.promise().query(statement, post);
+
+  // 提供数据
   return data;
 };

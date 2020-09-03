@@ -12,6 +12,11 @@ const router = express.Router();
 router.get('/posts', requestUrl, postController.index);
 
 /**
+ * 创建内容的接口
+ */
+router.post('/posts', postController.store);
+
+/**
  * 导出路由
  */
 export default router;
