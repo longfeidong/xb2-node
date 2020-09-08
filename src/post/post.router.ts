@@ -22,6 +22,11 @@ router.post('/posts', postController.store);
 router.patch('/posts/:postId', postController.update);
 
 /**
+ * 删除内容的接口
+ */
+router.delete('/posts/:postId', postController.destroy);
+
+/**
  * 导出路由
  */
 export default router;
