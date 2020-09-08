@@ -51,3 +51,21 @@ export const createPost = async (post: PostModel) => {
   // 提供数据
   return data;
 };
+
+/**
+ * 更新内容
+ */
+export const updatePost = async (postId: number, post: PostModel) => {
+  // 准备更新语句
+  const statement = `
+    UPDATE post
+    SET ?
+    WHERE id = ?
+  `;
+
+  // 执行查询
+  const [data] = await connection.promise().query(statement, [post, postId]);
+
+  // 提供数据
+  return data;
+};
