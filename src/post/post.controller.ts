@@ -36,11 +36,13 @@ export const store = async (
   next: NextFunction,
 ) => {
   // 准备数据
-  const { title, content } = request.body;
+  // const { title, content } = request.body;
+  const postData = _.pick(request.body, ['title', 'content']);
 
   // 创建并响应数据
   try {
-    const data = await createPost({ title, content });
+    // const data = await createPost({ title, content });
+    const data = await createPost(postData);
     response.status(201).send(data);
   } catch (error) {
     next(error);
