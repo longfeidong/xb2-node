@@ -1,6 +1,26 @@
 // 定义user需要的中间件
 import { Request, Response, NextFunction } from 'express';
 import * as userService from './user.service';
+import bcrypt from 'bcrypt';
+
+/**
+ * hash 密码
+ */
+export const hashPassword = async (
+  request: Request,
+  response: Response,
+  next: NextFunction,
+) => {
+  // 准备数据
+  const { password } = request.body;
+
+  // hash密码值
+  request.body.password = await bcrypt.hash(password, 10);
+
+  // 下一步
+  next();
+};
+
 /**
  * 验证用户数据
  */
